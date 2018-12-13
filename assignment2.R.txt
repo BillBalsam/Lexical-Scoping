@@ -1,0 +1,28 @@
+makeCacheMatrix <- function(x = matrix()) {
+	inver <- NULL
+	mcm <- function(y) {
+		x <<-y
+		inver<<-NULL
+	}
+	hold <-function() x
+	setinver <- function(inverse) inve <<-inverse
+	getinver <- function() inver
+	list(mcm = mcm,
+	     hold = hold,
+	     setinver = setinver,
+	     getinver = getinver)
+}
+
+
+cacheSolve <- function(x, ...) {
+
+	inver <- x$getinver()
+	if (!is.null(inver)) {
+		message("retrieving data")
+		return(inver)
+		}
+		getting <-x$get()
+		inver <- solve(getting,...)
+		x$setinver(inver)
+		inver
+}
